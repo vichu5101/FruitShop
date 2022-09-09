@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Juice Details from user
+        juice = {}
+
+        // Juice Type
+        typeOfJuice = prompt("What type of juice do you want\n1. Apple\n2. Pomogranate\n3. Orange\n4. Muskmelon\n5. WaterMelon")
+        if (typeOfJuice == "Apple" && typeOfJuice == "Pomogranate" && typeOfJuice == "Orange" && typeOfJuice == "Muskmulon" && typeOfJuice == "Watermelon") {
+            juice["JuiceType"] = typeOfJuice
+        }
+        else {
+            juice["JuiceType"] = "Apple"
+        }
+
+        // Service Type
+        serviceType = prompt("Parcel or Drink").toLowerCase()
+        if (serviceType == "parcel") {
+            juice["OrderType"] = "Parcel"
+        }
+        else {
+            juice["OrderType"] = "Drink"
+        }
+
+        // Number of Juice
+        howManyJuice = prompt("How Many juice do you want")
+        juice["NOS"] = howManyJuice
+        CoolType = prompt("1. With Ice \n2. Without ice").toLowerCase()
+        if (CoolType == "with ice") {
+            juice["CoolType"] = "With Ice"
+        }
+        else {
+            juice["CoolType"] = "Without ice"
+        }
+
+        // Sugar Type
+        sugarType = prompt("1. With Sugar \n 2. Sugar Free").toLowerCase()
+        if (sugarType == "with sugar") {
+            juice["SugarType"] = "With Sugar"
+        }
+        else {
+            juice["SugarType"] = "SugarFree"
+        }
+
+        // IceCream Type with flavour
+        iceCreamType = prompt("Do you want Icecream\n Yes or No").toLowerCase()
+        if (iceCreamType == "yes") {
+            flavourOfIceCream = prompt("1. Vannila\n2. Strawberry\n3. Black Current")
+            if (flavourOfIceCream == "Vannila" && flavourOfIceCream == "Strawberry" && flavourOfIceCream == "Black current") {
+                juice["IceCream"] = flavourOfIceCream
+            }
+            else {
+                flavourOfIceCream = "Vannila"
+            }
+        }
+        else {
+            juice["IceCream"] = "Without iceCream"
+        }
+        console.log(juice)
+
+        //-----------------------------------------------------------------------------
+        // Call Back Function
+        function juiceFunction(fun) {
+            fun()
+        }
+
+        // Sugar Type Function
+        function Sugar() {
+            if (juice.SugarType == "With Sugar") {
+                document.write("Sugar added to your Juice")
+            }
+            else {
+                document.write("Your Juice is Sugar Free")
+            }
+        }
+
+        // Cool Type Function
+        function Ice() {
+            if (juice.CoolType == "With Ice") {
+                document.write("Ice added to your Juice")
+            }
+            else {
+                document.write("Ice Not added to your juice")
+            }
+        }
+
+        // IceCream Type Function
+        function IceCream() {
+            if (iceCreamType == "yes") {
+                document.write(`${flavourOfIceCream} IceCream added to your Juice`)
+            }
+            else {
+                document.write("Without Icecream")
+            }
+        }
+
+        // Welcome Function
+        function initial() {
+            document.write("---------- Welcome to SVN Fresh Juice Corner ----------")
+            document.write("<br>")
+            document.write("Your Ordered Received")
+            document.write("<br>")
+            document.write("Your Order Id  :  ", typeOfJuice.slice(0, 3) + (Math.floor(Math.random() * 100)).toString())
+            document.write("<br>")
+        }
+
+        //-----------------------------------------------------------------------------
+        // Timeout Asynchronous
+        setTimeout(() => {
+            juiceFunction(initial)
+            document.write("juice type:", typeOfJuice)
+            document.write("<br>")
+            setTimeout(() => {
+                document.write("Washing and Peeling The Fruits")
+                document.write("<br>")
+                setTimeout(() => {
+                    document.write("Cutting the Fruits")
+                    document.write("<br>")
+                    setTimeout(() => {
+                        document.write("Grinding The Fruits")
+                        document.write("<br>")
+                        setTimeout(() => {
+                            juiceFunction(Sugar)
+                            document.write("<br>")
+                            setTimeout(() => {
+                                juiceFunction(Ice)
+                                document.write("<br>")
+                                setTimeout(() => {
+                                    juiceFunction(IceCream)
+                                    document.write("<br>")
+                                    setTimeout(() => {
+                                        document.write("Your Order is Ready")
+                                        document.write("<br>")
+                                        document.write("Plese take your Order, Have a nice day...")
+                                        document.write("<br>")
+                                        document.write("---------- Thank You ----------")
+                                    }, 3000)
+                                }, 4000)
+                            }, 4000)
+                        }, 3000)
+                    }, 4000)
+                }, 3000)
+            }, 5000)
+        }, 100)
+        //-----------------------------------------------------------------------------
+    </script>
+
+</body>
+
+</html>
