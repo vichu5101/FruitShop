@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<h1 style="font-family: tah;"></h1>
 
 <body>
     <script>
         // Shop Status
         shopOpen = true
+        userInput = "yes"
         // Promise Function
-        function promiseFunction(userInput) {
+        function promiseFunction(usersOpinion) {
             return new Promise((resolve, reject) => {
-                if (userInput == "yes") {
-                    resolve()
+                if (userInput == usersOpinion) {
+                    setTimeout(() => { resolve() }, 3000)
                 }
                 else {
-                    reject()
+                    setTimeout(() => { reject() }, 1500)
                 }
             })
         }
@@ -40,23 +42,42 @@
             document.write("<br>")
             document.write("<p style='font-weight:Bold;font-family:Courier New;'>📝 ----------------    Order Details      ---------------- 📝   ")
             document.write("<br>")
-            document.write("📌 Juice Type : ", juice.JuiceType)
+            document.write("📌 Juice Type       : ", juice.JuiceType)
             document.write("<br>")
-            document.write("📌 Type of Service : ", juice.OrderType)
+            document.write("📌 Type of Service      : ", juice.OrderType)
             document.write("<br>")
-            document.write("📌 NOS : ", juice.NOS)
+            document.write("📌 NOS      : ", juice.NOS)
             document.write("<br>")
-            document.write("📌 Cool Type : ", juice.CoolType)
+            document.write("📌 Cool Type        : ", juice.CoolType)
             document.write("<br>")
-            document.write("📌 Sugar Type : ", juice.SugarType)
+            document.write("📌 Sugar Type       : ", juice.SugarType)
             document.write("<br>")
-            document.write("📌 Ice Cream : ", juice.IceCream)
+            document.write("📌 Ice Cream        : ", juice.IceCream)
             document.write("<br>")
-            document.write("Your Order Id  :  ", juiceTypeUserInput.slice(0, 3) + (Math.floor(Math.random() * 100)).toString())
+            document.write("Your Order Id       :  ", juiceTypeUserInput.slice(0, 3) + (Math.floor(Math.random() * 100)).toString())
             document.write("<br>")
-            document.write("💲 Bill : ", juice.NOS * 50, "/rs-")
+            document.write("💲 Bill     : ", juice.NOS * 50, "/rs-")
             document.write("<br>")
             callBackFunction(juiceTypeUserInput)
+        }
+
+        async function userTypes() {
+            await promiseFunction(sugarType)
+                .then(() => document.write("✔️ Sugar added to your Juice 🧂"))
+                .catch(() => document.write("❌ Your Juice is Sugar Free 🧂"))
+            document.write("<br>")
+            await promiseFunction(CoolType)
+                .then(() => document.write("✔️ Ice added to your Juice 🧊"))
+                .catch(() => document.write("❌ Ice Not added to your juice 🧊"))
+            document.write("<br>")
+            await promiseFunction(iceCreamType)
+                .then(() => document.write(`✔️ ${juice.IceCream} IceCream added to your Juice 🍨`))
+                .catch(() => document.write("❌ Without Icecream 🍨"))
+            document.write("<br>")
+            document.write("<h1><center>----------🙌 Your Order is Ready, Please take your Order. Have a nice day... 🙌-----------</center></h1>")
+            document.write("<br>")
+            document.write("<br>")
+            document.write("<h2><center>********** 💙 Thank You 💙 **********</center></h2>")
         }
         //-----------------------------------------------------------------------------
         // Timeout Asynchronous
@@ -75,27 +96,8 @@
                         document.write("<br>")
                         setTimeout(() => {
                             document.write("♻️ Grinding The Fruits")
-                            setTimeout(() => {
-                                promiseFunction(sugarType).then(() => { document.write("✔️ Sugar added to your Juice 🧂") },
-                                    () => { document.write("❌ Your Juice is Sugar Free 🧂") })
-                                document.write("<br>")
-                                setTimeout(() => {
-                                    promiseFunction(CoolType).then(() => { document.write("✔️ Ice added to your Juice 🧊") },
-                                        () => { document.write("❌ Ice Not added to your juice 🧊") })
-                                    document.write("<br>")
-                                    setTimeout(() => {
-                                        promiseFunction(iceCreamType).then(() => { document.write(`✔️ ${juice.IceCream} IceCream added to your Juice 🍨`), document.write("<br>") },
-                                            () => { document.write("❌ Without Icecream 🍨"), document.write("<br>") })
-                                        document.write("<br>")
-                                        setTimeout(() => {
-                                            document.write("<h1><center>----------🙌 Your Order is Ready, Please take your Order. Have a nice day... 🙌-----------</center></h1>")
-                                            document.write("<br>")
-                                            document.write("<br>")
-                                            document.write("<h2><center>********** 💙 Thank You 💙 **********</center></h2>")
-                                        }, 3000)
-                                    }, 3000)
-                                }, 3000)
-                            }, 3000)
+                            document.write("<br>")
+                            userTypes()
                         }, 4000)
                     }, 3000)
                 }, 5000)
@@ -165,7 +167,7 @@
                 resolve(setTimeout(initial, 2000, juice.JuiceType, preparingJuice))
             }
             else {
-                reject(document.write("☹️ ----- SORRY ------ ☹️"),
+                reject(document.write("<h1 style='color:red;'>☹️ ----- SORRY ------ ☹️</style></h1>"),
                     document.write("<br>")),
                     document.write("The Shop is closed right now 🔚")
             }

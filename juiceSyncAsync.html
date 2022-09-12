@@ -58,7 +58,7 @@
         iceCreamType = prompt("Do you want Icecream 🍨\n Yes or No").toLowerCase()
         if (iceCreamType == "yes") {
             flavourOfIceCream = prompt("1. Vannila 🍦\n2. Strawberry 🍦\n3. Black Current 🍦")
-            if (flavourOfIceCream == "Vannila" || flavourOfIceCream == "Strawberry" || flavourOfIceCream == "Black current") {
+            if (flavourOfIceCream == "Vannila" || flavourOfIceCream == "Strawberry" || flavourOfIceCream == "Black Current") {
                 juice["IceCream"] = flavourOfIceCream
             }
             else {
@@ -101,15 +101,17 @@
         //----------------------------------------------------------------------------------------
         // Welcome Function
         function initial(juiceTypeUserInput, callBackFunction) {
-            document.write("---------- 🥂🍸 Welcome to SVN Fresh Juice Corner 🍹🥃 ----------")
+            document.write("<body style='background-color: powderblue;'>")
+            document.write("<h1 style='color: black;font-family: Verdana;padding:40;background-color: royalblue;'><center>---------- 🥂🍸 Welcome to SVN Fresh Juice Corner 🍹🥃 ----------</center></h1>")
             document.write("<br>")
-            document.write("❣️ Don’t take tension when fruit juice gives you a fit sensation ❣️")
+            document.write("<h3 style='color: black;font-family: sans-serif;'><center>❣️ Don’t take tension when fruit juice gives you a fit sensation  ❣️</center></h3>")
             document.write("<br>")
-            document.write("------------------------------------------------------------------")
+            document.write("<hr style='width:50%;'><center></center></hr>")
             document.write("<br>")
-            document.write("Your Ordered Received ☑️")
+            document.write("<img src='juice.jpg' alt='Juice image' width='500' height='400' style='float:right'>")
+            document.write("<h3>Your Ordered Received ☑️</h3>")
             document.write("<br>")
-            document.write("📝 ----------------    Order Details      ---------------- 📝   ")
+            document.write("<p style='font-weight:Bold;font-family:Courier New;'>📝 ----------------    Order Details      ---------------- 📝   ")
             document.write("<br>")
             document.write("📌 Juice Type : ", juice.JuiceType)
             document.write("<br>")
@@ -158,10 +160,10 @@
                                         document.write("<br>")
                                         document.write("<br>")
                                         setTimeout(() => {
-                                            document.write("----------🙌 Your Order is Ready, Plese take your Order. Have a nice day... 🙌-----------")
+                                            document.write("<h1><center>----------🙌 Your Order is Ready, Please take your Order. Have a nice day... 🙌-----------</center></h1>")
                                             document.write("<br>")
                                             document.write("<br>")
-                                            document.write("********** 💙 Thank You 💙 **********")
+                                            document.write("<h2><center>********** 💙 Thank You 💙 **********</center></h2>")
                                         }, 3000)
                                     }, 4000)
                                 }, 4000)
